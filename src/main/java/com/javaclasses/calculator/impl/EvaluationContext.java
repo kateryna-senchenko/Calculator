@@ -13,7 +13,11 @@ public class EvaluationContext {
 
     private Deque<Double> operandStack  = new ArrayDeque<>();
 
+    public void pushNumber(double number){
 
+        operandStack.push(number);
+
+    }
 
     public double getResult(){
 
