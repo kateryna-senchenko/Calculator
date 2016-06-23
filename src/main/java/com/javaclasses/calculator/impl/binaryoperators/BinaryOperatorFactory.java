@@ -9,6 +9,8 @@ public class BinaryOperatorFactory {
 
             case "+": return new Plus();
 
+            case "-": return new Minus();
+
             default: return null;
         }
 
