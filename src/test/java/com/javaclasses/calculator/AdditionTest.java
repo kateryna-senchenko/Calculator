@@ -14,7 +14,7 @@ public class AdditionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 4d, calculator.evaluateMathExpression("2+2"), 0.0);
+        assertEquals("The result is incorrect", 4d, calculator.evaluateMathExpression("2+2"), 0.00001);
 
     }
 
@@ -23,7 +23,7 @@ public class AdditionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 5.2468, calculator.evaluateMathExpression("3.1234+2.1234"), 0.0);
+        assertEquals("The result is incorrect", 5.2468, calculator.evaluateMathExpression("3.1234+2.1234"), 0.00001);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class AdditionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 7.55, calculator.evaluateMathExpression("2.3+0.25+5"), 0.0);
+        assertEquals("The result is incorrect", 7.55, calculator.evaluateMathExpression("2.3+0.25+5"), 0.00001);
 
     }
 }

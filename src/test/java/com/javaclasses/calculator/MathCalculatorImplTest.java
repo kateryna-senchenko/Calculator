@@ -13,6 +13,14 @@ public class MathCalculatorImplTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 48.85, calculator.evaluateMathExpression("41-4.6+12.45"), 0.0);
+        assertEquals("The result is incorrect", 48.85, calculator.evaluateMathExpression("41-4.6+12.45"), 0.00001);
+    }
+
+    @Test
+    public void testSequentialSubtractionAndAddition() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 33.15, calculator.evaluateMathExpression("41+4.6-12.45"), 0.00001);
     }
 }

@@ -14,7 +14,7 @@ public class AcceptNumberTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 4d, calculator.evaluateMathExpression("4"), 0.0);
+        assertEquals("The result is incorrect", 4d, calculator.evaluateMathExpression("4"), 0.00001);
 
     }
 
@@ -23,7 +23,7 @@ public class AcceptNumberTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 2.14, calculator.evaluateMathExpression("2.14"), 0.0);
+        assertEquals("The result is incorrect", 2.14, calculator.evaluateMathExpression("2.14"), 0.00001);
 
     }
 
@@ -32,7 +32,7 @@ public class AcceptNumberTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", -3.2, calculator.evaluateMathExpression("-3.2"), 0.0);
+        assertEquals("The result is incorrect", -3.2, calculator.evaluateMathExpression("-3.2"), 0.00001);
 
     }
 }

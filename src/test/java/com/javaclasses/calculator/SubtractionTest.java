@@ -13,7 +13,7 @@ public class SubtractionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", -4d, calculator.evaluateMathExpression("6-10"), 0.0);
+        assertEquals("The result is incorrect", -4d, calculator.evaluateMathExpression("6-10"), 0.00001);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class SubtractionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 33.546, calculator.evaluateMathExpression("53.67-20.124"), 0.0);
+        assertEquals("The result is incorrect", 33.546, calculator.evaluateMathExpression("53.67-20.124"), 0.00001);
     }
 
     @Test
@@ -29,6 +29,6 @@ public class SubtractionTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 8.5, calculator.evaluateMathExpression("25-4-12.5"), 0.0);
+        assertEquals("The result is incorrect", 8.5, calculator.evaluateMathExpression("25-4-12.5"), 0.00001);
     }
 }
