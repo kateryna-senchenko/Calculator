@@ -15,6 +15,8 @@ public class BinaryOperatorFactory {
 
             case "/": return new DivisionOperator();
 
+            case "^": return new Power();
+
             default: return null;
         }
 
