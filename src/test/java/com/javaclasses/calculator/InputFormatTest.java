@@ -1,15 +1,14 @@
 package com.javaclasses.calculator;
 
+
 import com.javaclasses.calculator.impl.MathCalculatorImpl;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class MathCalculatorImplTest {
+public class InputFormatTest {
 
-
-    private final MathCalculator calculator = new MathCalculatorImpl();
+    private MathCalculator calculator = new MathCalculatorImpl();
 
     @Test
     public void testEmptyInput(){
@@ -28,6 +27,4 @@ public class MathCalculatorImplTest {
             assertEquals("Input should contain mathematical expression", e.getMessage());
         }
     }
-
-
 }
