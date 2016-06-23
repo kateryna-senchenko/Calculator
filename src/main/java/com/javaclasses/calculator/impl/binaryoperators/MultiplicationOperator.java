@@ -3,7 +3,7 @@ package com.javaclasses.calculator.impl.binaryoperators;
 
 import static com.javaclasses.calculator.impl.binaryoperators.Priority.MEDIUM;
 
-public class Multiply implements BinaryOperator {
+public class MultiplicationOperator implements BinaryOperator {
 
     private final Priority priority = MEDIUM;
 

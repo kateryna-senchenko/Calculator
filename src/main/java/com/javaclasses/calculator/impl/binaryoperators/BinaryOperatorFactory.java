@@ -11,7 +11,9 @@ public class BinaryOperatorFactory {
 
             case "-": return new Minus();
 
-            case "*": return new Multiply();
+            case "*": return new MultiplicationOperator();
+
+            case "/": return new DivisionOperator();
 
             default: return null;
         }
