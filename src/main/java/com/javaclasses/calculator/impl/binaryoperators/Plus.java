@@ -1,9 +1,11 @@
 package com.javaclasses.calculator.impl.binaryoperators;
 
 
+import static com.javaclasses.calculator.impl.binaryoperators.Priority.LOW;
+
 public class Plus implements BinaryOperator{
 
-    private final Priority priority = Priority.LOW;
+    private final Priority priority = LOW;
 
     @Override
     public double execute(double leftOperand, double rightOperand) {

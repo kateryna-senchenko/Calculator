@@ -1,18 +1,15 @@
 package com.javaclasses.calculator.impl.binaryoperators;
 
 
-import java.math.BigDecimal;
+import static com.javaclasses.calculator.impl.binaryoperators.Priority.MEDIUM;
 
-import static com.javaclasses.calculator.impl.binaryoperators.Priority.LOW;
+public class Multiply implements BinaryOperator {
 
-public class Minus implements BinaryOperator{
-
-    private final Priority priority = LOW;
+    private final Priority priority = MEDIUM;
 
     @Override
     public double execute(double leftOperand, double rightOperand) {
-
-        return leftOperand - rightOperand;
+        return leftOperand * rightOperand;
     }
 
     @Override
@@ -29,5 +26,4 @@ public class Minus implements BinaryOperator{
 
         return 1;
     }
-
 }

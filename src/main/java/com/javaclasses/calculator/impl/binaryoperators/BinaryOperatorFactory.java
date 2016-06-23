@@ -11,6 +11,8 @@ public class BinaryOperatorFactory {
 
             case "-": return new Minus();
 
+            case "*": return new Multiply();
+
             default: return null;
         }
 
