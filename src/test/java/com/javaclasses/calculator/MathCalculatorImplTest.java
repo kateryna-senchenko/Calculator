@@ -39,4 +39,14 @@ public class MathCalculatorImplTest {
 
         assertEquals("The result is incorrect", 67d, calculator.evaluateMathExpression("8*11-21"), 0.00001);
     }
+
+    @Test
+    public void testSequentialOperationsWithDivision() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 16.75, calculator.evaluateMathExpression("5*3-2+5/8*6"), 0.00001);
+    }
+
+
 }
