@@ -3,6 +3,8 @@ package com.javaclasses.calculator.impl;
 
 import com.javaclasses.calculator.MathCalculator;
 import com.javaclasses.calculator.EvaluationException;
+import com.javaclasses.calculator.impl.binaryoperators.BinaryOperator;
+import com.javaclasses.calculator.impl.parsers.BinaryOperatorParser;
 import com.javaclasses.calculator.impl.parsers.FinishParser;
 import com.javaclasses.calculator.impl.parsers.NumberParser;
 import com.javaclasses.calculator.impl.parsers.Parser;
@@ -30,7 +32,8 @@ public class MathCalculatorImpl implements MathCalculator {
         transitionMatrix = new HashMap<>();
 
         transitionMatrix.put(START, new Parser[]{new NumberParser()});
-        transitionMatrix.put(NUMBER, new Parser[]{new FinishParser()});
+        transitionMatrix.put(NUMBER, new Parser[]{new BinaryOperatorParser(), new FinishParser()});
+        transitionMatrix.put(BINARY_OPERATOR, new Parser[]{new NumberParser()});
 
     }
 
@@ -51,7 +54,7 @@ public class MathCalculatorImpl implements MathCalculator {
 
             for (Parser parser : possibleParsers) {
 
-                if (parser.parse(expression, pointer).getClass().equals(Double.class)) {
+                if (parser.getState() == NUMBER) {
 
                     double number = (double) parser.parse(expression, pointer);
                     evaluationContext.pushNumber(number);
@@ -59,6 +62,13 @@ public class MathCalculatorImpl implements MathCalculator {
                     currentState = NUMBER;
                     break;
 
+                } else if(parser.getState() == BINARY_OPERATOR){
+
+                    BinaryOperator operator = (BinaryOperator) parser.parse(expression, pointer);
+                    evaluationContext.pushOperator(operator);
+                    pointer = parser.getParsePosition();
+                    currentState = BINARY_OPERATOR;
+                    break;
                 }
 
             }
