@@ -23,7 +23,7 @@ public class EvaluationContext {
 
     public void pushOperator(BinaryOperator operator) {
 
-        while (operatorStack.size() > 0 && operator.compareTo(operatorStack.peek()) < 0) {
+        while (operatorStack.size() > 0 && operator.compareTo(operatorStack.peek()) <= 0) {
 
             BinaryOperator currentOperation = operatorStack.pop();
             double rightOperand = operandStack.pop();
