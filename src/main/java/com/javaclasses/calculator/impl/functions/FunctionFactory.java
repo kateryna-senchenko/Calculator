@@ -16,6 +16,8 @@ public class FunctionFactory {
 
             case "sum(": return new SumFunction();
 
+            case "max(": return new MaximumFunction();
+
             default: throw new IllegalStateException("Expression " + functionName + " is illegal");
         }
 

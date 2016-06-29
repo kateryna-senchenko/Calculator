@@ -17,7 +17,7 @@ import static com.javaclasses.calculator.impl.State.*;
  */
 public class MathCalculatorImpl implements MathCalculator {
 
-    private static final Logger log = LoggerFactory.getLogger(EvaluationContext.class);
+    private static final Logger log = LoggerFactory.getLogger(MathCalculatorImpl.class);
 
     private State currentState = START;
     private Map<State, Set<State>> transitionMatrix;
