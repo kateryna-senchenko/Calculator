@@ -40,4 +40,16 @@ public class InputFormatTest {
         }
 
     }
+
+    @Test
+    public void testBrackets(){
+
+        try {
+            calculator.evaluateMathExpression("2+(3-2");
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertEquals("Should contain closing bracket", e.getMessage());
+        }
+
+    }
 }

@@ -73,7 +73,7 @@ public class MathCalculatorImpl implements MathCalculator {
         if(evaluationStack.size() > 1)  {
 
             log.error("Evaluation failed, brackets do not match");
-            throw new EvaluationException("Should contain closing bracket at index ", input.getPointer());
+            throw new EvaluationException("Should contain closing bracket", input.getPointer());
 
         }
 

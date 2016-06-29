@@ -2,7 +2,7 @@ package com.javaclasses.calculator.impl;
 
 
 import com.javaclasses.calculator.impl.binaryoperators.BinaryOperator;
-/*import com.javaclasses.calculator.impl.functions.ClosureContext;*/
+import com.javaclasses.calculator.impl.functions.ClosureContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,19 +22,19 @@ public class EvaluationContext {
     private Deque<Double> operandStack  = new ArrayDeque<>();
     private Deque<BinaryOperator> operatorStack = new ArrayDeque<>();
 
-    /*private EvaluationContext parent;
-    private ClosureContext closure;*/
+    private EvaluationContext parent;
+    private ClosureContext closure;
 
 
     public EvaluationContext(){
-        /*this.parent = null;
-        this.closure = null;*/
+        this.parent = null;
+        this.closure = null;
     }
 
-    /*public EvaluationContext(EvaluationContext parent, ClosureContext closure){
+    public EvaluationContext(EvaluationContext parent, ClosureContext closure){
         this.parent = parent;
         this.closure = closure;
-    }*/
+    }
 
 
     /**
@@ -114,10 +114,10 @@ public class EvaluationContext {
      */
     public double getResult(){
 
-        /*if(closure != null){
+        if(closure != null){
 
             return closure.getFunction().execute((Double[]) getAllOperands().toArray(new Double[getAllOperands().size()]));
-        }*/
+        }
 
         popAllOperators();
 

@@ -17,7 +17,7 @@ public class ParsersStates {
 
         put(NUMBER, new NumberParser());
         put(BINARY_OPERATOR, new BinaryOperatorParser());
-
+        put(OPENING_BRACKET, new OpeningBracketParser());
 
     }};
 
