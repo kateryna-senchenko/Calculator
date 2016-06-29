@@ -8,6 +8,7 @@ import java.util.Map;
 import static com.javaclasses.calculator.impl.State.*;
 
 
+
 /**
  * Contains map of available parsers according to the state
  */
@@ -18,6 +19,7 @@ public class ParsersStates {
         put(NUMBER, new NumberParser());
         put(BINARY_OPERATOR, new BinaryOperatorParser());
         put(OPENING_BRACKET, new OpeningBracketParser());
+        put(CLOSING_BRACKET, new ClosingBracketParser());
 
     }};
 

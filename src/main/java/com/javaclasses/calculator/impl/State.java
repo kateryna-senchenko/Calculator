@@ -9,6 +9,7 @@ public enum State {
     NUMBER,
     BINARY_OPERATOR,
     OPENING_BRACKET,
+    CLOSING_BRACKET,
     FINISH
 
 }

@@ -52,4 +52,16 @@ public class InputFormatTest {
         }
 
     }
+
+    @Test
+    public void testMismatchedBracket(){
+
+        try {
+            calculator.evaluateMathExpression("(2+3)*5)");
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertEquals("Brackets do not match", e.getMessage());
+        }
+
+    }
 }
