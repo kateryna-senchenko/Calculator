@@ -18,6 +18,8 @@ public class FunctionFactory {
 
             case "max(": return new MaximumFunction();
 
+            case "min(": return new MinimumFunction();
+
             default: throw new IllegalStateException("Expression " + functionName + " is illegal");
         }
 

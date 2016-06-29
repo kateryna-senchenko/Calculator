@@ -33,4 +33,14 @@ public class FunctionsTest {
         assertEquals("The result is incorrect", 10d, calculator.evaluateMathExpression("sum(max(3,6,2,4),4)"), 0.00001);
 
     }
+
+    @Test
+    public void testMinimum() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 2d, calculator.evaluateMathExpression("min(3,6,2,4)"), 0.00001);
+
+    }
+
 }
