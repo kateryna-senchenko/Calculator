@@ -45,6 +45,19 @@ public class FunctionsTest {
     }
 
     @Test
+    public void testMaximumWithNoArguments() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        try {
+            calculator.evaluateMathExpression("max()");
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertEquals("Maximum function should contain arguments", e.getMessage());
+        }
+    }
+
+    @Test
     public void testPiFunction() throws EvaluationException {
 
         final MathCalculator calculator = new MathCalculatorImpl();

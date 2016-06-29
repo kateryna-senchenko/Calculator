@@ -8,6 +8,10 @@ public class MinimumFunction implements Function{
     @Override
     public double execute(Double... arguments) {
 
+        if (arguments.length < 1){
+            throw new IllegalStateException("Minimum function should contain arguments");
+        }
+
         double min = arguments[0];
 
         for(double argument: arguments){
