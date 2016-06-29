@@ -8,38 +8,36 @@ import org.slf4j.LoggerFactory;
 import java.util.Deque;
 
 /**
- * Implementation of the Parser interface for Closing Bracket Parser
+ * Implementation of the Parser interface for Argument Separator Parser
  */
-public class ClosingBracketParser implements Parser {
+public class ArgumentSeparatorParser implements Parser{
 
-    private final Logger log = LoggerFactory.getLogger(ClosingBracketParser.class);
 
+    private final Logger log = LoggerFactory.getLogger(ArgumentSeparatorParser.class);
+
+    @Override
     public boolean parse(InputContext input, Deque<EvaluationContext> outputContext) {
 
         if (log.isDebugEnabled()){
             log.debug("Start parsing symbol " + input.getRemainingExpression().charAt(0));
         }
 
-        if (input.getRemainingExpression().startsWith(")")) {
+        if(input.getRemainingExpression().startsWith(",")){
+
+            outputContext.peek().popAllOperators();
 
             if(log.isDebugEnabled()){
                 log.debug("Parsed argument separator");
             }
 
-            if (outputContext.size() < 2) {
-
-                log.error("Brackets do not match");
-                throw new IllegalStateException("Brackets do not match");
-            }
-            outputContext.peek().popAllOperators();
-            double number = outputContext.pop().getResult();
-            outputContext.peek().pushNumber(number);
             input.incrementPointer();
 
         } else return false;
 
 
+
         return true;
     }
+
 
 }

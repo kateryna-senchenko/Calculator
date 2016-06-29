@@ -15,7 +15,7 @@ import java.util.Deque;
  */
 public class NumberParser implements Parser {
 
-    private final Logger log = LoggerFactory.getLogger(BinaryOperatorParser.class);
+    private final Logger log = LoggerFactory.getLogger(NumberParser.class);
 
     @Override
     public boolean parse(InputContext input, Deque<EvaluationContext> outputContext){
@@ -38,7 +38,7 @@ public class NumberParser implements Parser {
 
             input.updatePointer(parsePosition.getIndex());
 
-            // change outputContext according to the parsed expression
+
             outputContext.peek().pushNumber(number);
 
         }catch(Exception e){

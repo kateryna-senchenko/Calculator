@@ -10,6 +10,8 @@ public enum State {
     BINARY_OPERATOR,
     OPENING_BRACKET,
     CLOSING_BRACKET,
+    FUNCTION,
+    ARGUMENT_SEPARATOR,
     FINISH
 
 }
