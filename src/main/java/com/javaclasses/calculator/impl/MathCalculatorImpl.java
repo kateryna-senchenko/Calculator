@@ -43,7 +43,7 @@ public class MathCalculatorImpl implements MathCalculator {
 
         if (expression.isEmpty()) {
             log.error("Empty input");
-            throw new EvaluationException("Input should contain mathematical expression", 0);
+            throw new EvaluationException("Input should contain mathematical expression ", 0);
         }
 
         input = new InputContext(expression);
@@ -73,7 +73,7 @@ public class MathCalculatorImpl implements MathCalculator {
         if(evaluationStack.size() > 1)  {
 
             log.error("Evaluation failed, brackets do not match");
-            throw new EvaluationException("Should contain closing bracket", input.getPointer());
+            throw new EvaluationException("Should contain closing bracket at index ", input.getPointer());
 
         }
 
@@ -107,7 +107,7 @@ public class MathCalculatorImpl implements MathCalculator {
         if (!hasMoved){
 
             log.error("No state was accepted, invalid input character " + input.getRemainingExpression().charAt(0));
-            throw new EvaluationException("Illegal symbol " + input.getRemainingExpression().charAt(0), input.getPointer());
+            throw new EvaluationException("Illegal symbol at index ", input.getPointer());
         }
 
     }

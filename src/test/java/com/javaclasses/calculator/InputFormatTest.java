@@ -17,14 +17,14 @@ public class InputFormatTest {
             calculator.evaluateMathExpression("");
             fail("Expected exception was not thrown");
         } catch (Exception e) {
-            assertEquals("Input should contain mathematical expression", e.getMessage());
+            assertEquals("Input should contain mathematical expression 0", e.getMessage());
         }
 
         try {
             calculator.evaluateMathExpression(" ");
             fail("Expected exception was not thrown");
         } catch (Exception e) {
-            assertEquals("Input should contain mathematical expression", e.getMessage());
+            assertEquals("Input should contain mathematical expression 0", e.getMessage());
         }
     }
 
@@ -36,7 +36,7 @@ public class InputFormatTest {
             calculator.evaluateMathExpression("5&3");
             fail("Expected exception was not thrown");
         } catch (EvaluationException e) {
-            assertEquals("Illegal symbol &", e.getMessage());
+            assertEquals("Illegal symbol at index 1", e.getMessage());
         }
 
     }
@@ -48,7 +48,7 @@ public class InputFormatTest {
             calculator.evaluateMathExpression("2+(3-2");
             fail("Expected exception was not thrown");
         } catch (Exception e) {
-            assertEquals("Should contain closing bracket", e.getMessage());
+            assertEquals("Should contain closing bracket at index 6", e.getMessage());
         }
 
     }

@@ -5,16 +5,16 @@ package com.javaclasses.calculator;
  */
 public class EvaluationException extends Exception {
 
-    private final int errorPointer;
+    private final int errorPosition;
 
 
     public EvaluationException(String message, int errorPointer){
-        super(message);
-        this.errorPointer = errorPointer;
+        super(message + errorPointer);
+        this.errorPosition = errorPointer;
     }
 
-    public String getMassage(){
-        return (super.getMessage() + errorPointer);
-    }
+   public int getErrorPosition(){
+       return errorPosition;
+   }
 
 }
