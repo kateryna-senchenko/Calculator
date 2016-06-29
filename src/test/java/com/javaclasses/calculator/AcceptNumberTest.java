@@ -5,6 +5,7 @@ import com.javaclasses.calculator.impl.MathCalculatorImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+
 public class AcceptNumberTest {
 
 

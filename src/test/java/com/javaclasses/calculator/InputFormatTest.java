@@ -27,4 +27,17 @@ public class InputFormatTest {
             assertEquals("Input should contain mathematical expression", e.getMessage());
         }
     }
+
+
+    @Test
+    public void testInvalidBinaryOperator(){
+
+        try {
+            calculator.evaluateMathExpression("5&3");
+            fail("Expected exception was not thrown");
+        } catch (EvaluationException e) {
+            assertEquals("Illegal symbol &", e.getMessage());
+        }
+
+    }
 }

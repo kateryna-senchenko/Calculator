@@ -1,44 +1,51 @@
 package com.javaclasses.calculator.impl.parsers;
 
 
-import com.javaclasses.calculator.impl.State;
+import com.javaclasses.calculator.impl.EvaluationContext;
+import com.javaclasses.calculator.impl.InputContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
+import java.util.Deque;
 
-import static com.javaclasses.calculator.impl.State.NUMBER;
-
+/**
+ * Implementation of the Parser interface for Number Parser
+ */
 public class NumberParser implements Parser {
 
-    private final State state = NUMBER;
-    private ParsePosition parsePosition;
+    private final Logger log = LoggerFactory.getLogger(BinaryOperatorParser.class);
 
     @Override
-    public Double parse(String expression, int pointer){
+    public boolean parse(InputContext input, Deque<EvaluationContext> outputContext){
 
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
-        parsePosition = new ParsePosition(0);
+        ParsePosition parsePosition = new ParsePosition(0);
         double number;
+
         try{
-            number = decimalFormat.parse(expression.substring(pointer), parsePosition).doubleValue();
-            parsePosition.setIndex(parsePosition.getIndex()+ pointer);
+
+            if (log.isDebugEnabled()){
+                log.debug("Start parsing symbol " + input.getRemainingExpression().charAt(0));
+            }
+
+            number = decimalFormat.parse(input.getRemainingExpression(), parsePosition).doubleValue();
+
+            if(log.isInfoEnabled()){
+                log.info("Parsed " + number);
+            }
+
+            input.updatePointer(parsePosition.getIndex());
+
+            // change outputContext according to the parsed expression
+            outputContext.peek().pushNumber(number);
 
         }catch(Exception e){
-            return null;
+            return false;
         }
 
-
-        return number;
-    }
-
-
-    public int getParsePosition(){
-        return parsePosition.getIndex();
-    }
-
-    @Override
-    public State getState(){
-        return state;
+        return true;
     }
 
 
