@@ -4,6 +4,7 @@ import com.javaclasses.calculator.impl.MathCalculatorImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 
 public class FunctionsTest {
@@ -43,4 +44,43 @@ public class FunctionsTest {
 
     }
 
+    @Test
+    public void testPiFunction() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 3.14159, calculator.evaluateMathExpression("pi()"), 0.00001);
+
+    }
+
+    @Test
+    public void testPiFunctionAsArgument() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 7.14159, calculator.evaluateMathExpression("4+min(pi(),4)"), 0.00001);
+
+    }
+
+    @Test
+    public void testPiFunctionWithParameters(){
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        try {
+            calculator.evaluateMathExpression("pi(2)");
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertEquals("pi() function should not contain arguments", e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void testMixedExpression() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("The result is incorrect", 16d, calculator.evaluateMathExpression("5*3-2^2*min(2,1)+5"), 0.00001);
+    }
 }

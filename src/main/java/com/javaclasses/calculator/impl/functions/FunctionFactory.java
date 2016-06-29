@@ -20,6 +20,8 @@ public class FunctionFactory {
 
             case "min(": return new MinimumFunction();
 
+            case "pi(": return new PiFunction();
+
             default: throw new IllegalStateException("Expression " + functionName + " is illegal");
         }
 

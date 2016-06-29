@@ -64,4 +64,16 @@ public class InputFormatTest {
         }
 
     }
+
+    @Test
+    public void testInvalidSymbols(){
+
+        try {
+            calculator.evaluateMathExpression("5+bla");
+            fail("Expected exception was not thrown");
+        } catch (Exception e) {
+            assertEquals("Expression bla is illegal", e.getMessage());
+        }
+
+    }
 }
