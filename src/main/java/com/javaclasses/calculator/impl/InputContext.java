@@ -28,18 +28,24 @@ public class InputContext {
     }
 
     public String getRemainingExpression(){
+
+        while(hasMoreToParse() && evaluationExpression.charAt(pointer)==' '){
+            incrementPointer();
+        }
+
+
         return evaluationExpression.substring(pointer);
     }
 
     /**
      * Checks if the expression has more characters to be parsed
-     * @return true if expression has more to parse, otherwise return false
+     * @return true if expression has more to execute, otherwise return false
      */
     public boolean hasMoreToParse(){
 
-        if(pointer >= evaluationExpression.length()){
-            return false;
+        if(pointer < evaluationExpression.length()){
+            return true;
         }
-        return true;
+        return false;
     }
 }

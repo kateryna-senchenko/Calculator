@@ -1,5 +1,9 @@
 package com.javaclasses.calculator.impl.binaryoperators;
 
+import static com.javaclasses.calculator.impl.binaryoperators.Priority.HIGH;
+import static com.javaclasses.calculator.impl.binaryoperators.Priority.LOW;
+import static com.javaclasses.calculator.impl.binaryoperators.Priority.MEDIUM;
+
 /**
  * Factory to create instances of binary operators
  */
@@ -14,15 +18,15 @@ public class BinaryOperatorFactory {
 
         switch (symbol){
 
-            case '+': return new Plus();
+            case '+': return new Plus(LOW);
 
-            case '-': return new Minus();
+            case '-': return new Minus(LOW);
 
-            case '*': return new MultiplicationOperator();
+            case '*': return new MultiplicationOperator(MEDIUM);
 
-            case '/': return new DivisionOperator();
+            case '/': return new DivisionOperator(MEDIUM);
 
-            case '^': return new Power();
+            case '^': return new Power(HIGH);
 
             default: return null;
         }

@@ -11,7 +11,7 @@ public class InputFormatTest {
     private MathCalculator calculator = new MathCalculatorImpl();
 
     @Test
-    public void testEmptyInput(){
+    public void testEmptyInput() {
 
         try {
             calculator.evaluateMathExpression("");
@@ -20,17 +20,11 @@ public class InputFormatTest {
             assertEquals("Input should contain mathematical expression 0", e.getMessage());
         }
 
-        try {
-            calculator.evaluateMathExpression(" ");
-            fail("Expected exception was not thrown");
-        } catch (Exception e) {
-            assertEquals("Input should contain mathematical expression 0", e.getMessage());
-        }
     }
 
 
     @Test
-    public void testInvalidBinaryOperator(){
+    public void testInvalidBinaryOperator() {
 
         try {
             calculator.evaluateMathExpression("5&3");
@@ -42,7 +36,7 @@ public class InputFormatTest {
     }
 
     @Test
-    public void testBrackets(){
+    public void testBrackets() {
 
         try {
             calculator.evaluateMathExpression("2+(3-2");
@@ -54,7 +48,7 @@ public class InputFormatTest {
     }
 
     @Test
-    public void testMismatchedBracket(){
+    public void testMismatchedBracket() {
 
         try {
             calculator.evaluateMathExpression("(2+3)*5)");
@@ -66,7 +60,7 @@ public class InputFormatTest {
     }
 
     @Test
-    public void testInvalidSymbols(){
+    public void testInvalidSymbols() {
 
         try {
             calculator.evaluateMathExpression("5+bla");
@@ -74,6 +68,16 @@ public class InputFormatTest {
         } catch (Exception e) {
             assertEquals("Expression bla is illegal", e.getMessage());
         }
+
+    }
+
+    @Test
+    public void testWithWhiteSpaces() throws EvaluationException {
+
+        final MathCalculator calculator = new MathCalculatorImpl();
+
+        assertEquals("Expression containing white spaces was not calculated",
+                7d, calculator.evaluateMathExpression(" 5 + 2"), 0.00001);
 
     }
 }

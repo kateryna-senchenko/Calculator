@@ -6,10 +6,7 @@ import com.javaclasses.calculator.impl.functions.ClosureContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -116,7 +113,10 @@ public class EvaluationContext {
 
         if(closure != null){
 
-            return closure.getFunction().execute((Double[]) getAllOperands().toArray(new Double[getAllOperands().size()]));
+            final List<Double> operandsList = new ArrayList<>(getAllOperands());
+            final Double[] arguments = operandsList.toArray(new Double[operandsList.size()]);
+
+            return closure.getFunction().execute(arguments);
         }
 
         popAllOperators();

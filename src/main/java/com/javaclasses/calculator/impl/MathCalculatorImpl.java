@@ -3,7 +3,7 @@ package com.javaclasses.calculator.impl;
 
 import com.javaclasses.calculator.MathCalculator;
 import com.javaclasses.calculator.EvaluationException;
-import com.javaclasses.calculator.impl.parsers.Parser;
+import com.javaclasses.calculator.impl.parsers.StateAcceptor;
 import com.javaclasses.calculator.impl.parsers.ParsersStates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +20,8 @@ public class MathCalculatorImpl implements MathCalculator {
     private static final Logger log = LoggerFactory.getLogger(MathCalculatorImpl.class);
 
     private State currentState = START;
-    private Map<State, Set<State>> transitionMatrix;
-    private Map<State, Parser> availableParsers;
+    private TransitionMatrix transitionMatrix;
+    private Map<State, StateAcceptor> availableParsers;
 
     private Deque<EvaluationContext> evaluationStack = new ArrayDeque<>();
     private InputContext input;
@@ -29,7 +29,7 @@ public class MathCalculatorImpl implements MathCalculator {
 
     public MathCalculatorImpl() {
 
-        transitionMatrix = new TransitionMatrix().getTransitionMatrix();
+        transitionMatrix = new TransitionMatrix();
         availableParsers = new ParsersStates().getAvailableParsers();
         evaluationStack.push(new EvaluationContext());
 
@@ -39,7 +39,6 @@ public class MathCalculatorImpl implements MathCalculator {
     @Override
     public double evaluateMathExpression(String expression) throws EvaluationException {
 
-        expression = expression.replaceAll("\\s", "");
 
         if (expression.isEmpty()) {
             log.error("Empty input");
@@ -55,19 +54,13 @@ public class MathCalculatorImpl implements MathCalculator {
                 log.info("Moving from state " + currentState);
             }
 
-            moveForward(transitionMatrix.get(currentState));
+            moveForward(transitionMatrix.getPossibleTransitions(currentState));
 
             if (log.isInfoEnabled()) {
                 log.info("Moved to the state " + currentState);
             }
 
-            if (!input.hasMoreToParse()) {
-                currentState = FINISH;
 
-                if (log.isInfoEnabled()) {
-                    log.info("Moved to the state " + currentState);
-                }
-            }
         }
 
         if(evaluationStack.size() > 1)  {
@@ -93,7 +86,13 @@ public class MathCalculatorImpl implements MathCalculator {
 
         for (State state : possibleMoves) {
 
-            if(availableParsers.get(state).parse(input, evaluationStack)){
+            StateAcceptor parser = availableParsers.get(state);
+
+            if(parser == null){
+                throw new IllegalStateException("StateAcceptor was not found for state " + state);
+            }
+
+            if(parser.execute(input, evaluationStack)){
                 hasMoved=true;
                 currentState = state;
 

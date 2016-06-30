@@ -13,19 +13,20 @@ import static com.javaclasses.calculator.impl.State.*;
  */
 public class ParsersStates {
 
-    private final Map<State, Parser> availableParsers = new HashMap<State, Parser>(){{
+    private final Map<State, StateAcceptor> availableParsers = new HashMap<State, StateAcceptor>(){{
 
-        put(NUMBER, new NumberParser());
-        put(BINARY_OPERATOR, new BinaryOperatorParser());
-        put(OPENING_BRACKET, new OpeningBracketParser());
-        put(CLOSING_BRACKET, new ClosingBracketParser());
-        put(FUNCTION, new FunctionParser());
-        put(ARGUMENT_SEPARATOR, new ArgumentSeparatorParser());
+        put(NUMBER, new NumberStateAcceptor());
+        put(BINARY_OPERATOR, new BinaryOperatorStateAcceptor());
+        put(OPENING_BRACKET, new OpeningBracketStateAcceptor());
+        put(CLOSING_BRACKET, new ClosingBracketStateAcceptor());
+        put(FUNCTION, new FunctionStateAcceptor());
+        put(ARGUMENT_SEPARATOR, new ArgumentSeparatorStateAcceptor());
+        put(FINISH, new FinishStateAcceptor());
 
     }};
 
 
-    public Map<State, Parser> getAvailableParsers(){
+    public Map<State, StateAcceptor> getAvailableParsers(){
         return availableParsers;
     }
 }

@@ -15,16 +15,16 @@ public class AcceptNumberTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 4d, calculator.evaluateMathExpression("4"), 0.00001);
+        assertEquals("Integer number was not accepted", 4d, calculator.evaluateMathExpression("4"), 0.00001);
 
     }
 
     @Test
-    public void testAcceptDecimalNumber() throws EvaluationException {
+    public void testAcceptFloatingPointNumber() throws EvaluationException {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", 2.14, calculator.evaluateMathExpression("2.14"), 0.00001);
+        assertEquals("Floating point number was not accepted", 2.14, calculator.evaluateMathExpression("2.14"), 0.00001);
 
     }
 
@@ -33,7 +33,7 @@ public class AcceptNumberTest {
 
         final MathCalculator calculator = new MathCalculatorImpl();
 
-        assertEquals("The result is incorrect", -3.2, calculator.evaluateMathExpression("-3.2"), 0.00001);
+        assertEquals("Negative number was not accepted", -3.2, calculator.evaluateMathExpression("-3.2"), 0.00001);
 
     }
 }

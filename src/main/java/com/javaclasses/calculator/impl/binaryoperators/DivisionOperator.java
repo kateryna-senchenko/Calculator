@@ -5,9 +5,12 @@ import static com.javaclasses.calculator.impl.binaryoperators.Priority.MEDIUM;
 /**
  * Implementation of the BinaryOperator interface for division operator
  */
-public class DivisionOperator implements BinaryOperator{
+public class DivisionOperator extends AbstractBinaryOperator{
 
-    private final Priority priority = MEDIUM;
+
+    public DivisionOperator(Priority priority) {
+        super(priority);
+    }
 
     @Override
     public double execute(double leftOperand, double rightOperand) {
@@ -19,19 +22,5 @@ public class DivisionOperator implements BinaryOperator{
         return leftOperand / rightOperand;
     }
 
-    @Override
-    public Priority getPriority() {
-        return priority;
-    }
 
-    @Override
-    public int compareTo(BinaryOperator o) {
-
-        if (this.priority.compareTo(o.getPriority()) < 0){
-            return -1;
-        } else if(this.priority.compareTo(o.getPriority()) == 0){
-            return 0;
-        }
-        return 1;
-    }
 }
